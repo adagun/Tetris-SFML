@@ -65,6 +65,7 @@ bool Tetromino::fallDown(const sf::Vector2i  &playfield) {
         if (mino.y < ROWS -1)
             mino.moveDown();
     }
+    return true;
 }
 
 

@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/Tetris.dir/main.cpp.o CMakeFiles/Tetris.dir/Game.cpp.o CMakeFiles/Tetris.dir/Grid.cpp.o CMakeFiles/Tetris.dir/Tetromino.cpp.o -o Tetris  -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-network -lsfml-system 

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Tetris"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\LinuxApps\;CMake Files\..\..\..\LinuxApps\JetBrains\;CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\;CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\;CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\;CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\;CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\;CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\;CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\;CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\;CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\Platform\;CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\Compiler\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Tetris">
+				<Option output="/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Tetris" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/Acer/1_Lexicon/Tetris/Tetris/."/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 Tetris"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Tetris/fast">
+				<Option output="/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Tetris" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/Acer/1_Lexicon/Tetris/Tetris/."/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 Tetris/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/Constants.h">
+			<Option target="Tetris"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/Game.cpp">
+			<Option target="Tetris"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/Game.h">
+			<Option target="Tetris"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/Grid.cpp">
+			<Option target="Tetris"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/Grid.h">
+			<Option target="Tetris"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/Mino.hpp">
+			<Option target="Tetris"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/Tetromino.cpp">
+			<Option target="Tetris"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/Tetromino.h">
+			<Option target="Tetris"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/main.cpp">
+			<Option target="Tetris"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/CMakeCInformation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/CMakeCXXInformation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/CMakeCommonLanguageInclude.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/CMakeExtraGeneratorDetermineCompilerMacrosAndIncludeDirs.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/CMakeFindCodeBlocks.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/CMakeGenericSystem.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/CMakeInitializeConfigs.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/CMakeLanguageInformation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/CMakeSystemSpecificInformation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/CMakeSystemSpecificInitialize.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/ProcessorCount.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/Platform/Linux-GNU-C.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\Platform\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/Platform/Linux-GNU-CXX.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\Platform\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/Platform/Linux-GNU.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\Platform\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/Platform/Linux.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\Platform\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/Platform/UnixPaths.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\Platform\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/Compiler/CMakeCommonCompilerMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/Compiler/GNU-C.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/Compiler/GNU-CXX.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="/home/Acer/1_Lexicon/Tetris/Tetris/../../../LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/share/cmake-3.20/Modules/Compiler/GNU.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\LinuxApps\JetBrains\CLion-2021.2.2\clion-2021.2.2\bin\cmake\linux\share\cmake-3.20\Modules\Compiler\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

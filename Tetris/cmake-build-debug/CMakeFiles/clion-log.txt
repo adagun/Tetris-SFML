@@ -1,0 +1,4 @@
+/home/adam/Acer/LinuxApps/JetBrains/CLion-2021.2.2/clion-2021.2.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home/Acer/1_Lexicon/Tetris/Tetris
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug
