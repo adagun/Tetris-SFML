@@ -27,12 +27,6 @@ int Game::run() {
     auto square = Square(10.0f, 5.0f);
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "TETRIS");
 
-    // grid
-    sf::RectangleShape block;
-    block.setSize(sf::Vector2f(SQUARE_SIZE, SQUARE_SIZE));
-    block.setFillColor(sf::Color::Black);
-    block.setOutlineColor(sf::Color::White);
-    block.setOutlineThickness(1);
 
     auto grid = Grid(window, WINDOW_WIDTH, WINDOW_HEIGHT);
     // main window
