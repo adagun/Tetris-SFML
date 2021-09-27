@@ -15,6 +15,7 @@ add_executable(Tetris
         Tetromino.cpp
         Tetromino.h
         Mino.hpp
+        Constants.h
         )
 
 target_link_libraries (Tetris sfml-graphics sfml-window sfml-audio sfml-network sfml-system)

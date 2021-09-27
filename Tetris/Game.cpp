@@ -6,78 +6,87 @@
 #include "Constants.h"
 #include "Mino.hpp"
 
-
+// TODO only one mino remains when moving left or right outside of the grid
+// TODO spawn new tetrominos
+// todo fix and finish create all shapes correctly in the Tetromino createShape function
+// TODO check and remove full rows
 
 int Game::run() {
 
 
-    std::vector<std::vector<int>> playfield(COLUMNS, std::vector<int>(ROWS));
-
-
-    sf::Clock gameClock;
+    sf::Vector2i playfield(COLUMNS, ROWS);
 
     sf::RenderWindow window(sf::VideoMode(SQUARE_SIZE * COLUMNS, SQUARE_SIZE * ROWS), "TETRIS");
-    window.setSize(sf::Vector2u(500, 800));
+    window.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
     auto grid = Grid(window);
-    auto tetromino = Tetromino(I);
+    auto tetromino = Tetromino(O,   sf::Vector2i(COLUMNS/2, ROWS));
+
+
     sf::Event event{};
+    int gameSpeed = 1000;
+    sf::Time dt = sf::milliseconds(gameSpeed);
 
     // game loop
-    while (window.isOpen()) {
+    while (window.isOpen())
+    {
+        elapsedTime += clock.restart();
+        while( elapsedTime >= dt ){
+            tetromino.fallDown(playfield);
+            elapsedTime -= dt;
+        }
 
-        auto dt = gameClock.restart().asSeconds();
-
-        while (window.pollEvent(event)) {
+        updateDeltaTime();
+        while (window.pollEvent(event))
+        {
 
             if (event.type == sf::Event::Closed || event.key.code == sf::Keyboard::Escape)
             {
                 window.close();
+                break;
             }
 
-            sf::RectangleShape square(sf::Vector2f(SQUARE_SIZE - 0.5, SQUARE_SIZE -0.5));
+            // movement
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            {
+                // prevent square from going out of screen
+                tetromino.move(playfield, 'L');
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+                tetromino.move(playfield, 'R');
+            }
 
+        }
+
+            sf::RectangleShape square(sf::Vector2f(SQUARE_SIZE - 1, SQUARE_SIZE -1));
             square.setFillColor(sf::Color::Green);
 
             window.clear();
-            // draw grid
+            // draw grid//
             grid.render(square);
+
             for(auto mino  : tetromino.getTetromino())
             {
-                std::cout << mino.getSquare().getPosition().x << std::endl;
-                mino.getSquare().setFillColor(sf::Color::Cyan);
-                window.draw(mino.getSquare());
+                square.setFillColor(sf::Color::Cyan);
+                square.setPosition(static_cast<float>(mino.x * SQUARE_SIZE), static_cast<float>(mino.y * SQUARE_SIZE));
+
+                window.draw(square);
+                std::cout << square.getPosition().y << std::endl;
+                std::cout << square.getPosition().x << std::endl;
             }
 
 
-        }
 
             window.display();
         }
 
 
-            // movement
-            /*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-                // prevent square from going out of screen
-                if (squareShape.getPosition().x > 0)
-                    squareShape.setPosition(squareShape.getPosition().x - square.xMove, squareShape.getPosition().y);
-            }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-                if (squareShape.getPosition().x < WINDOW_WIDTH - SQUARE_SIZE)
-                    squareShape.setPosition(squareShape.getPosition().x + square.xMove, squareShape.getPosition().y);
-            }
-
-            if (squareShape.getPosition().y < WINDOW_HEIGHT - SQUARE_SIZE) {
-                squareShape.setPosition(squareShape.getPosition().x, squareShape.getPosition().y + square.downSpeed);
-            }
-
-            // clear before redrawing
-            window.clear();
-
-            // very laggy
-           // grid.render();
-            tetromino.draw(window);
-            window.draw(squareShape);*/
 
 
         return EXIT_SUCCESS;
     }
+
+    // updating the delta time for rendering one frame
+void Game::updateDeltaTime()
+{
+    this->deltaTime = this->clock.restart().asSeconds();
+}

@@ -10,10 +10,15 @@
 
 class Game {
 public:
+    Game() = default;
     int run();
+    void updateDeltaTime();
+
+
 private:
-
-
+    sf::Clock clock;
+    float deltaTime;
+    sf::Time elapsedTime;
 };
 
 
