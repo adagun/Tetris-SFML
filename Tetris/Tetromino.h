@@ -1,33 +1,34 @@
-//
-// Created by adam on 2021-09-24.
-//
+#include <SFML/System/Vector2.hpp>
+#include <SFML/Graphics/RectangleShape.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
+#include "Mino.hpp"
 
 #ifndef TETRIS_TETROMINO_H
 #define TETRIS_TETROMINO_H
 
-// Tetrimino colors are as follows.
-//Cyan I
-//Yellow O
-//Purple T
-//Green S
-//Red Z
-//Blue J
-//Orange L
-
-
+enum Shape
+{
+    I,
+    O,
+    T,
+    S,
+    Z,
+    J,
+    L,
+};
 
 class Tetromino {
 
-    public:
-    void rotate();
-    int side;
-    // where the tetromino is positioned in the playfield
-    int rowOffset;
-    int colOffset;
-
-
-
-
+private:
+    Shape shape;
+    std::array<Mino, 4> minos;
+public:
+    Tetromino(Shape shape) : shape(shape)
+    {
+        createShape(shape);
+    }
+    void createShape(Shape shape);
+    std::array<Mino, 4> getTetromino() {return minos;}
 
 
 };

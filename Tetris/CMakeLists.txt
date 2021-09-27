@@ -12,6 +12,9 @@ add_executable(Tetris
         Game.h
         Grid.h
         Grid.cpp
+        Tetromino.cpp
+        Tetromino.h
+        Mino.hpp
         )
 
 target_link_libraries (Tetris sfml-graphics sfml-window sfml-audio sfml-network sfml-system)

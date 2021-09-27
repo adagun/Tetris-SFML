@@ -2,53 +2,61 @@
 #include <iostream>
 #include "Game.h"
 #include "Grid.h"
+#include "Tetromino.h"
+#include "Constants.h"
+#include "Mino.hpp"
 
-const int WINDOW_WIDTH = 700;
-const int WINDOW_HEIGHT = 900;
-const int SQUARE_SIZE = 50;
 
-class Square{
-public:
-
-    float xPos;
-    float yPos;
-    float downSpeed;
-    float xMove = 1.0f;
-    Square(float downSpeed, float xMove) : downSpeed(downSpeed), xMove(xMove)
-    {
-        xPos = 0.f;
-        yPos = 0.f;
-    }
-
-};
 
 int Game::run() {
 
-    auto square = Square(10.0f, 5.0f);
-    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "TETRIS");
+
+    std::vector<std::vector<int>> playfield(COLUMNS, std::vector<int>(ROWS));
 
 
-    auto grid = Grid(window, WINDOW_WIDTH, WINDOW_HEIGHT);
-    // main window
-    sf::RectangleShape squareShape(sf::Vector2f(SQUARE_SIZE, SQUARE_SIZE));
-    window.setFramerateLimit(60);
+    sf::Clock gameClock;
 
-    // TODO move one square at a time
+    sf::RenderWindow window(sf::VideoMode(SQUARE_SIZE * COLUMNS, SQUARE_SIZE * ROWS), "TETRIS");
+    window.setSize(sf::Vector2u(500, 800));
+    auto grid = Grid(window);
+    auto tetromino = Tetromino(I);
+    sf::Event event{};
+
     // game loop
     while (window.isOpen()) {
-        sf::Event event{};
+
+        auto dt = gameClock.restart().asSeconds();
+
         while (window.pollEvent(event)) {
 
             if (event.type == sf::Event::Closed || event.key.code == sf::Keyboard::Escape)
+            {
                 window.close();
+            }
 
-            // delta time
-            sf::Clock gameClock;
-            float dt = gameClock.restart().asSeconds();
+            sf::RectangleShape square(sf::Vector2f(SQUARE_SIZE - 0.5, SQUARE_SIZE -0.5));
+
+            square.setFillColor(sf::Color::Green);
+
+            window.clear();
+            // draw grid
+            grid.render(square);
+            for(auto mino  : tetromino.getTetromino())
+            {
+                std::cout << mino.getSquare().getPosition().x << std::endl;
+                mino.getSquare().setFillColor(sf::Color::Cyan);
+                window.draw(mino.getSquare());
+            }
+
+
+        }
+
+            window.display();
+        }
 
 
             // movement
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+            /*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
                 // prevent square from going out of screen
                 if (squareShape.getPosition().x > 0)
                     squareShape.setPosition(squareShape.getPosition().x - square.xMove, squareShape.getPosition().y);
@@ -66,11 +74,10 @@ int Game::run() {
             window.clear();
 
             // very laggy
-            grid.render();
-            window.draw(squareShape);
-            window.display();
+           // grid.render();
+            tetromino.draw(window);
+            window.draw(squareShape);*/
 
-        }
-    }
+
         return EXIT_SUCCESS;
     }
