@@ -59,3 +59,6 @@ Tetris/.idea/*
 # CMake
 cmake-build-*/
 /Tetris/.idea/sonarlint/
+/.vs/Tetris/v16/ipch/AutoPCH/7eaa8532e775b562
+/.vs/Tetris/v16
+/.vs
