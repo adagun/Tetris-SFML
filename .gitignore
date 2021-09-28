@@ -54,7 +54,7 @@ bld/
 *.userosscache
 *.sln.docstates
 
-*.idea
+.idea/
 Tetris/.idea/*
 # CMake
 cmake-build-*/
