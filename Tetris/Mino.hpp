@@ -5,8 +5,6 @@
 
 // This class represents one of the four squares that makes up a tetrimino
 class Mino {
-private:
-
 
 public:
     int x;
@@ -23,8 +21,6 @@ public:
     }
 
 };
-
-
 
 
 #endif //TETRIS_MINO_HPP

@@ -10,8 +10,8 @@
 // TODO spawn new tetrominos
 // TODO fix and finish create all shapes correctly in the Tetromino createShape function
 // TODO check and remove full rows
-// TODO split mino into header and source file
 // TODO implement rotate function
+// TODO implement collision with tetrominos at the bottom
 
 int Game::run() {
 
