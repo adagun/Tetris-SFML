@@ -34,7 +34,8 @@ public:
     std::array<Mino, 4> getTetromino() {return minos;}
     bool fallDown(const sf::Vector2i &playfield);
     //void rotate();
-    void move(const sf::Vector2i &playfield, char direction);
+    void moveLeft(const sf::Vector2i &playfield);
+    void moveRight(const sf::Vector2i &playfield);
 };
 
 

@@ -68,37 +68,40 @@ bool Tetromino::fallDown(const sf::Vector2i  &playfield) {
     return true;
 }
 
-
-
-void Tetromino::move(const sf::Vector2i &playfield, char direction)
+void Tetromino::moveLeft(const sf::Vector2i& playfield)
 {
-    switch (direction)
-    {
-        case'L':
-        {
-            for(auto &mino : minos)
-            {
-                // stop it from going outside of the screen
-                if(mino.x -1 < 0)
-                    return;
+     for(auto &mino : minos)
+     {             
+          
+         //check all minos before moving so it doesn't go out of screen
+         if(mino.x -1 < 0)         
+            return;     
+     }    
+     for(auto &mino : minos)
+     {
+                 mino.x--;
+     }
+            
 
-                mino.x--;
-            }
-            break;
-        }
-        case'R':
-        {
-            for(auto &mino : minos)
+}
+
+void Tetromino::moveRight(const sf::Vector2i& playfield)
+{
+     for(auto &mino : minos)
             {
                 if(mino.x + 1 >= COLUMNS )
                     return;
-                mino.x++;
+               
             }
-            break;
-        }
-    }
+
+       for(auto &mino : minos)
+     {
+                 mino.x++;
+     }
 
 }
+
+
 
 
 

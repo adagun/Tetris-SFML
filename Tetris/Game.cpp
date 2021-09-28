@@ -6,10 +6,12 @@
 #include "Constants.h"
 #include "Mino.hpp"
 
-// TODO only one mino remains when moving left or right outside of the grid
+
 // TODO spawn new tetrominos
-// todo fix and finish create all shapes correctly in the Tetromino createShape function
+// TODO fix and finish create all shapes correctly in the Tetromino createShape function
 // TODO check and remove full rows
+// TODO split mino into header and source file
+// TODO implement rotate function
 
 int Game::run() {
 
@@ -47,12 +49,12 @@ int Game::run() {
 
             // movement
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            {
-                // prevent square from going out of screen
-                tetromino.move(playfield, 'L');
+            {      
+                tetromino.moveLeft(playfield);
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-                tetromino.move(playfield, 'R');
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) 
+            {
+                tetromino.moveRight(playfield);
             }
 
         }
