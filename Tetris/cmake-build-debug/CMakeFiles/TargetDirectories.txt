@@ -1,3 +1,0 @@
-/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/Acer/1_Lexicon/Tetris/Tetris/cmake-build-debug/CMakeFiles/Tetris.dir
