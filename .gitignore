@@ -58,4 +58,4 @@ bld/
 Tetris/.idea/*
 # CMake
 cmake-build-*/
-*.pb
+/Tetris/.idea/sonarlint/
