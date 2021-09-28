@@ -3,7 +3,7 @@
 #include "Tetromino.h"
 
 
-    void Tetromino::createShape(Shape shape, sf::Vector2i position)
+    void Tetromino::createShape(Shape shape)
     {
 
         switch(shape)
@@ -52,16 +52,13 @@
             default:
                 break;
         }
-        for(auto mino : minos)
-        {
-           mino.x += position.x;
-           mino.y += position.y;
-        }
+
     }
 
 bool Tetromino::fallDown(const sf::Vector2i  &playfield) {
     for (auto &mino : minos)
     {
+        // fall to bottom
         if (mino.y < ROWS -1)
             mino.moveDown();
     }
@@ -98,6 +95,16 @@ void Tetromino::moveRight(const sf::Vector2i& playfield)
      {
                  mino.x++;
      }
+
+}
+
+void Tetromino::moveCenter(const sf::Vector2i& playfield)
+{
+     for(auto &mino : minos)
+            {
+               mino.x += COLUMNS/2;               
+             }
+
 
 }
 

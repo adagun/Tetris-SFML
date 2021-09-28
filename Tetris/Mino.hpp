@@ -11,9 +11,10 @@ public:
     int y;
     Mino(){}
     Mino(int x, int y) : x(x), y(y) {}
-
-    sf::Vector2i getPosition() {return sf::Vector2i(x,y);} const
-
+    sf::Vector2i getPosition() const
+    {
+        return sf::Vector2i(x,y);
+    } 
     // moves the mino down a cell in the grid
     void moveDown()
     {

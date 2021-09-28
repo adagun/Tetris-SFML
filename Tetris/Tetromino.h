@@ -26,16 +26,17 @@ private:
     Shape shape;
     std::array<Mino, 4> minos;
 public:
-    Tetromino(Shape shape, sf::Vector2i position) : shape(shape)
+    Tetromino(Shape shape) : shape(shape)
     {
-        createShape(shape, position);
+        createShape(shape);
     }
-    void createShape(Shape shape, sf::Vector2i position);
+    void createShape(Shape shape);
     std::array<Mino, 4> getTetromino() {return minos;}
     bool fallDown(const sf::Vector2i &playfield);
     //void rotate();
     void moveLeft(const sf::Vector2i &playfield);
     void moveRight(const sf::Vector2i &playfield);
+    void moveCenter(const sf::Vector2i &playfield);
 };
 
 

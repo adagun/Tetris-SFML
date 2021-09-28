@@ -21,10 +21,11 @@ int Game::run() {
     sf::RenderWindow window(sf::VideoMode(SQUARE_SIZE * COLUMNS, SQUARE_SIZE * ROWS), "TETRIS");
     window.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
     auto grid = Grid(window);
-    auto tetromino = Tetromino(O,   sf::Vector2i(COLUMNS/2, ROWS));
-
-
+    auto tetromino = Tetromino(T);
+    tetromino.moveCenter(playfield);
+ 
     sf::Event event{};
+    // time for the tetromino to fall one square
     int gameSpeed = 1000;
     sf::Time dt = sf::milliseconds(gameSpeed);
 
@@ -70,13 +71,8 @@ int Game::run() {
             {
                 square.setFillColor(sf::Color::Cyan);
                 square.setPosition(static_cast<float>(mino.x * SQUARE_SIZE), static_cast<float>(mino.y * SQUARE_SIZE));
-
                 window.draw(square);
-                std::cout << square.getPosition().y << std::endl;
-                std::cout << square.getPosition().x << std::endl;
             }
-
-
 
             window.display();
         }
