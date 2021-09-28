@@ -62,3 +62,4 @@ cmake-build-*/
 /.vs/Tetris/v16/ipch/AutoPCH/7eaa8532e775b562
 /.vs/Tetris/v16
 /.vs
+/Tetris/out/build/x64-Debug
