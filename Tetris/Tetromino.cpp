@@ -11,17 +11,17 @@
             case I:
             {
 
-                minos[0] = Mino(1, -1);
+                minos[0] = Mino(-1, -1);
                 minos[1] = Mino(0, -1);
-                minos[2] = Mino(-1,-1);
-                minos[3] = Mino(-2,-1);
+                minos[2] = Mino(1,-1);
+                minos[3] = Mino(2,-1);
                 break;
             }  case O:
             {
-                minos[0] = Mino(1, -1);
-                minos[1] = Mino(0, -1);
-                minos[2] = Mino(-1,-1);
-                minos[3] = Mino(-2,-1);
+                minos[0] = Mino(1, 0);
+                minos[1] = Mino(0, 0);
+                minos[2] = Mino(1, -1);
+                minos[3] = Mino(0, -1);
 
                 break;
             }  case T:
@@ -46,6 +46,7 @@
                 break;
             }  case L:
             {
+               
 
                 break;
             }

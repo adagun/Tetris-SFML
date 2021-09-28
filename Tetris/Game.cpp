@@ -21,7 +21,7 @@ int Game::run() {
     sf::RenderWindow window(sf::VideoMode(SQUARE_SIZE * COLUMNS, SQUARE_SIZE * ROWS), "TETRIS");
     window.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
     auto grid = Grid(window);
-    auto tetromino = Tetromino(T);
+    auto tetromino = Tetromino(O);
     tetromino.moveCenter(playfield);
  
     sf::Event event{};
