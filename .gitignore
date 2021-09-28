@@ -55,6 +55,7 @@ bld/
 *.sln.docstates
 
 *.idea
-Tetris/.idea
+Tetris/.idea*
 # CMake
 cmake-build-*/
+*.pb
