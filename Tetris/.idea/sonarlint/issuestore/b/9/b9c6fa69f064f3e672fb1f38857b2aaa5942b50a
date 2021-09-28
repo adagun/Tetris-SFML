@@ -1,14 +1,0 @@
-
-?	cpp:S1117"*declaration shadows a field of 'Tetromino'(°ÅŠ
-P	cpp:S1199"6Extract this nested code block into a separate method.(ÒÌâ–øÿÿÿÿ
-P	cpp:S1199"6Extract this nested code block into a separate method.(ÒÌâ–øÿÿÿÿ
-P	cpp:S1199"6Extract this nested code block into a separate method.(ÒÌâ–øÿÿÿÿ
-P	cpp:S1199$"6Extract this nested code block into a separate method.(ÒÌâ–øÿÿÿÿ
-P	cpp:S1199("6Extract this nested code block into a separate method.(ÒÌâ–øÿÿÿÿ
-P	cpp:S1199,"6Extract this nested code block into a separate method.(ÒÌâ–øÿÿÿÿ
-P	cpp:S11990"6Extract this nested code block into a separate method.(ÒÌâ–øÿÿÿÿ
-W	cpp:S1172>";Remove the unused parameter "playfield" or make it unnamed.(úÕÛ8úÌîÄÂ/
-V	cpp:S1172I";Remove the unused parameter "playfield" or make it unnamed.(šÜòK8—®ëÇÂ/
-^cpp:SwitchWithoutDefaultK".Add a "default" case to this switch statement.(˜ì—”ùÿÿÿÿ8êå³ÇÂ/
-W	cpp:S1199N"6Extract this nested code block into a separate method.(ÒÌâ–øÿÿÿÿ8ûÉ´ÇÂ/
-W	cpp:S1199Z"6Extract this nested code block into a separate method.(ÒÌâ–øÿÿÿÿ8«ñÇÂ/
