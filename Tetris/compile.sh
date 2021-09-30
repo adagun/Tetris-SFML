@@ -1,1 +1,2 @@
-g++ -o out -I . ./*.cpp -lsfml-graphics -lsfml-window -lsfml-system
+# script for building on linux
+g++ -o Tetris_linux -I . ./*.cpp -lsfml-graphics -lsfml-window -lsfml-system

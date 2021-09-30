@@ -63,3 +63,4 @@ cmake-build-*/
 /.vs/Tetris/v16
 /.vs
 /Tetris/out/build/x64-Debug
+/Tetris/Tetris_linux
