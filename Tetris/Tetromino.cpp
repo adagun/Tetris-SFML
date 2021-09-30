@@ -4,7 +4,6 @@
 
     void Tetromino::createShape(Shape shape)
     {
-
         switch(shape)
         {
             case I:
@@ -71,11 +70,21 @@
     }
 
 bool Tetromino::fallDown(const sf::Vector2i  &playfield) {
+
+    for(auto &mino : minos)
+    {
+        // if any mino hits the floor it should make the whole tetromino stop
+        if (mino.y > ROWS -2)
+            return false;
+    }
+
     for (auto &mino : minos)
     {
         // fall to bottom
         if (mino.y < ROWS -1)
             mino.moveDown();
+        else
+            return false;
     }
     return true;
 }
@@ -83,8 +92,7 @@ bool Tetromino::fallDown(const sf::Vector2i  &playfield) {
 void Tetromino::moveLeft(const sf::Vector2i& playfield)
 {
      for(auto &mino : minos)
-     {             
-          
+     {
          //check all minos before moving so it doesn't go out of screen
          if(mino.x -1 < 0)         
             return;     
@@ -93,37 +101,34 @@ void Tetromino::moveLeft(const sf::Vector2i& playfield)
      {
                  mino.x--;
      }
-            
-
 }
 
 void Tetromino::moveRight(const sf::Vector2i& playfield)
 {
      for(auto &mino : minos)
-            {
-                if(mino.x + 1 >= COLUMNS )
-                    return;
-               
-            }
+        {
+            if(mino.x + 1 >= COLUMNS )
+                return;
+        }
 
        for(auto &mino : minos)
-     {
+       {
                  mino.x++;
-     }
+       }
 
 }
 
 void Tetromino::moveCenter(const sf::Vector2i& playfield)
 {
      for(auto &mino : minos)
-            {
-               mino.x += COLUMNS/2;               
-             }
+        {
+           mino.x += COLUMNS/2;
+        }
 }
 
 void Tetromino::moveDown(const sf::Vector2i &playfield)
 {
-
+    fallDown(playfield);
 }
 
 

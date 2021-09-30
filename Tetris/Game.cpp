@@ -24,10 +24,10 @@ int Game::run() {
     auto grid = Grid(window);
     auto tetromino = Tetromino(getRandomShape());
     tetromino.moveCenter(playfield);
- 
+
     sf::Event event{};
     // time for the tetromino to fall one square
-    int gameSpeed = 1000;
+    int gameSpeed = 500;
     sf::Time dt = sf::milliseconds(gameSpeed);
 
     // game loop
@@ -57,6 +57,10 @@ int Game::run() {
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) 
             {
                 tetromino.moveRight(playfield);
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+            {
+                tetromino.moveDown(playfield);
             }
 
         }

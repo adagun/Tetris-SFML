@@ -39,7 +39,9 @@ public:
     void moveRight(const sf::Vector2i &playfield);
     void moveDown(const sf::Vector2i &playfield);
     void moveCenter(const sf::Vector2i &playfield);
+    void dropDown(const sf::Vector2i &playfield);
     sf::Color getColor() const {return color;}
+
 };
 
 
