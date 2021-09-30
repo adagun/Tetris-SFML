@@ -3,6 +3,7 @@
 #include "Grid.h"
 #include "Constants.h"
 #include <vector>
+#include "Tetromino.h"
 #ifndef TETRIS_GAME_H
 #define TETRIS_GAME_H
 
@@ -13,6 +14,7 @@ public:
     Game() = default;
     int run();
     void updateDeltaTime();
+    Shape getRandomShape();
 
 
 private:

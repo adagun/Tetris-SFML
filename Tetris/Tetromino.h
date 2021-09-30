@@ -37,6 +37,7 @@ public:
     //void rotate();
     void moveLeft(const sf::Vector2i &playfield);
     void moveRight(const sf::Vector2i &playfield);
+    void moveDown(const sf::Vector2i &playfield);
     void moveCenter(const sf::Vector2i &playfield);
     sf::Color getColor() const {return color;}
 };

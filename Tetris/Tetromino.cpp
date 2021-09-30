@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "Tetromino.h"
 
@@ -120,7 +119,10 @@ void Tetromino::moveCenter(const sf::Vector2i& playfield)
             {
                mino.x += COLUMNS/2;               
              }
+}
 
+void Tetromino::moveDown(const sf::Vector2i &playfield)
+{
 
 }
 

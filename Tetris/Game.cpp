@@ -5,13 +5,14 @@
 #include "Tetromino.h"
 #include "Constants.h"
 #include "Mino.hpp"
-
+#include <random>
 
 // TODO spawn new tetrominos
-// TODO fix and finish create all shapes correctly in the Tetromino createShape function
 // TODO check and remove full rows
 // TODO implement rotate function
 // TODO implement collision with tetrominos at the bottom
+// TODO drop down function
+// TODO game crashes if mouse hover the first column
 
 int Game::run() {
 
@@ -21,7 +22,7 @@ int Game::run() {
     sf::RenderWindow window(sf::VideoMode(SQUARE_SIZE * COLUMNS, SQUARE_SIZE * ROWS), "TETRIS");
     window.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
     auto grid = Grid(window);
-    auto tetromino = Tetromino(L);
+    auto tetromino = Tetromino(getRandomShape());
     tetromino.moveCenter(playfield);
  
     sf::Event event{};
@@ -76,9 +77,6 @@ int Game::run() {
             window.display();
         }
 
-
-
-
         return EXIT_SUCCESS;
     }
 
@@ -86,4 +84,45 @@ int Game::run() {
 void Game::updateDeltaTime()
 {
     this->deltaTime = this->clock.restart().asSeconds();
+}
+
+Shape Game::getRandomShape()
+{
+    std::random_device device;
+    std::mt19937 generator(device());
+    std::uniform_int_distribution<int> distribution(1,7);
+    int shapeNr = distribution(generator);
+    Shape shape;
+    switch(shapeNr)
+    {
+        case 1:
+        {
+            return Shape::I;
+        }
+        case 2:
+        {
+            return Shape::J;
+        }
+        case 3:
+        {
+            return Shape::L;
+        }
+        case 4:
+        {
+            return Shape::O;
+        }
+        case 5:
+        {
+            return Shape::S;
+        }
+        case 6:
+        {
+            return Shape::T;
+        }
+        case 7:
+        {
+            return Shape::Z;
+        }
+    }
+    return shape;
 }
