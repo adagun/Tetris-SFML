@@ -25,18 +25,20 @@ class Tetromino {
 private:
     Shape shape;
     std::array<Mino, 4> minos;
+    sf::Color color;
 public:
     Tetromino(Shape shape) : shape(shape)
     {
         createShape(shape);
     }
     void createShape(Shape shape);
-    std::array<Mino, 4> getTetromino() {return minos;}
+    std::array<Mino, 4> getTetromino() const {return minos;}
     bool fallDown(const sf::Vector2i &playfield);
     //void rotate();
     void moveLeft(const sf::Vector2i &playfield);
     void moveRight(const sf::Vector2i &playfield);
     void moveCenter(const sf::Vector2i &playfield);
+    sf::Color getColor() const {return color;}
 };
 
 

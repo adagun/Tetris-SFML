@@ -21,7 +21,7 @@ int Game::run() {
     sf::RenderWindow window(sf::VideoMode(SQUARE_SIZE * COLUMNS, SQUARE_SIZE * ROWS), "TETRIS");
     window.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
     auto grid = Grid(window);
-    auto tetromino = Tetromino(O);
+    auto tetromino = Tetromino(L);
     tetromino.moveCenter(playfield);
  
     sf::Event event{};
@@ -61,7 +61,6 @@ int Game::run() {
         }
 
             sf::RectangleShape square(sf::Vector2f(SQUARE_SIZE - 1, SQUARE_SIZE -1));
-            square.setFillColor(sf::Color::Green);
 
             window.clear();
             // draw grid//
@@ -69,7 +68,7 @@ int Game::run() {
 
             for(auto mino  : tetromino.getTetromino())
             {
-                square.setFillColor(sf::Color::Cyan);
+                square.setFillColor(tetromino.getColor());
                 square.setPosition(static_cast<float>(mino.x * SQUARE_SIZE), static_cast<float>(mino.y * SQUARE_SIZE));
                 window.draw(square);
             }
