@@ -15,7 +15,7 @@
 
 
 int Game::run() {
-
+    // Matrix is an alias for std::vector<std::vector<bool>>
     // 2d vector of bool
     // dropped pieces poisition are set as true
     // the minos needs to check if the neighbouring squares
