@@ -18,7 +18,8 @@ int Game::run() {
 
     // 2d vector of bool
     // dropped pieces poisition are set as true
-    // the minos needs to check if the neighbouring squares are occupied or not
+    // the minos needs to check if the neighbouring squares
+    //are occupied or no in the move and fall functions
    
     Matrix playfield(COLUMNS, std::vector<bool>(ROWS));
 
