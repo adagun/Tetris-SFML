@@ -69,13 +69,25 @@
 
     }
 
-bool Tetromino::fallDown(const sf::Vector2i  &playfield) {
+bool Tetromino::fallDown(const Matrix  &playfield) {
+
+
+    
+    for(auto &mino : minos)
+    {
+        // check if there is a occupied square below this minos position
+    }
+
+
 
     for(auto &mino : minos)
     {
         // if any mino hits the floor it should make the whole tetromino stop
         if (mino.y > ROWS -2)
+        {
+            falling = false;
             return false;
+        }
     }
 
     for (auto &mino : minos)
@@ -84,12 +96,15 @@ bool Tetromino::fallDown(const sf::Vector2i  &playfield) {
         if (mino.y < ROWS -1)
             mino.moveDown();
         else
+            {
+            falling = false;
             return false;
+            }
     }
     return true;
 }
 
-void Tetromino::moveLeft(const sf::Vector2i& playfield)
+void Tetromino::moveLeft(const Matrix& playfield)
 {
      for(auto &mino : minos)
      {
@@ -103,7 +118,7 @@ void Tetromino::moveLeft(const sf::Vector2i& playfield)
      }
 }
 
-void Tetromino::moveRight(const sf::Vector2i& playfield)
+void Tetromino::moveRight(const Matrix& playfield)
 {
      for(auto &mino : minos)
         {
@@ -118,7 +133,7 @@ void Tetromino::moveRight(const sf::Vector2i& playfield)
 
 }
 
-void Tetromino::moveCenter(const sf::Vector2i& playfield)
+void Tetromino::moveCenter()
 {
      for(auto &mino : minos)
         {
@@ -126,7 +141,9 @@ void Tetromino::moveCenter(const sf::Vector2i& playfield)
         }
 }
 
-void Tetromino::moveDown(const sf::Vector2i &playfield)
+
+
+void Tetromino::moveDown(const Matrix &playfield)
 {
     fallDown(playfield);
 }

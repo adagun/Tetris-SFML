@@ -11,17 +11,21 @@
 
 class Game {
 public:
-    Game() = default;
+    Game()
+    {
+      
+    }
     int run();
     void updateDeltaTime();
     Shape getRandomShape();
+    void update(Tetromino tetromino,  Matrix &playfiel);
 
 
 private:
     sf::Clock clock;
     float deltaTime;
     sf::Time elapsedTime;
+  
+
 };
-
-
 #endif //TETRIS_GAME_H
