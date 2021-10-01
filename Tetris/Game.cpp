@@ -9,7 +9,7 @@
 
 // TODO check and remove full rows
 // TODO implement rotate function
-// TODO implement collision with tetrominos at the bottom
+// TODO implement collision with tetrominos at the bottom and sides
 // TODO drop down function
 // TODO keep and redraw dropped pieces
 
