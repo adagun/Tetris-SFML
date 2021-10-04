@@ -21,7 +21,7 @@ int Game::run() {
     // the minos needs to check if the neighbouring squares
     //are occupied or no in the move and fall functions
    
-    Matrix playfield(COLUMNS, std::vector<bool>(ROWS));
+    Matrix playfield(ROWS, std::vector<bool>(COLUMNS));
 
     sf::RenderWindow window(sf::VideoMode(SQUARE_SIZE * COLUMNS, SQUARE_SIZE * ROWS), "TETRIS");
     window.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
@@ -40,7 +40,7 @@ int Game::run() {
     {
         elapsedTime += clock.restart();
         while( elapsedTime >= dt ){
-            currentTetromino.fallDown(playfield);
+            currentTetromino.fallDown(playfield);          
             elapsedTime -= dt;
         }
 
@@ -91,22 +91,58 @@ int Game::run() {
    
 
 
-             if(!currentTetromino.isFalling())
-            {
-                 // add minos position to the playfield matrix
-                update(currentTetromino, playfield);
-                auto tetromino = Tetromino(getRandomShape());
-                tetromino.moveCenter();
-                tetrominos.emplace_back(tetromino);
-                currentTetromino = tetromino;             
-             }
-              for(auto mino : currentTetromino.getTetromino())
+             for(auto mino : currentTetromino.getTetromino())
                  {
                     square.setFillColor(currentTetromino.getColor());
                     square.setPosition(static_cast<float>(mino.x * SQUARE_SIZE), static_cast<float>(mino.y * SQUARE_SIZE));
                     window.draw(square);
                  }
+
+
+             if(!currentTetromino.isFalling())
+            {
+                 std::cout << "Hit something" << std::endl;
+                 // add minos position to the playfield matrix
+                update(currentTetromino, playfield);
+
+                   for(int i = 0; i < ROWS; i++)
+                   {
+                       for(int j = 0; j < COLUMNS; j++)
+                       {
+                           std::cout << playfield[i][j] << " ";
+                       }
+                      std::cout << std::endl;
+                    }
+
+
+
+                auto tetromino = Tetromino(getRandomShape());
+                tetromino.moveCenter();
+                tetrominos.emplace_back(tetromino);
+                currentTetromino = tetromino;   
+
+              
+
+             }
+            if(gameOver)
+            {
+                std::cout << "game over" << std::endl;
+                return EXIT_SUCCESS;
+                // font faile
+               /* sf::Text text;
+                sf::Font font;
+               if (!font.loadFromFile("../Official.ttf"))
+               {
+                   return EXIT_FAILURE;
+               }
+                text.setFont(font);
+                text.setString("Game Over");
+                text.setCharacterSize(24);
+                text.setFillColor(sf::Color::Red);
+                window.draw(text);*/
+            }
             window.display();
+   
         }
 
         return EXIT_SUCCESS;
@@ -162,10 +198,16 @@ Shape Game::getRandomShape()
 // sets all square as occupied by a dropped piece
 void Game::update(Tetromino tetromino, Matrix &playfield)
 {
+    for(auto &mino : tetromino.getTetromino())
+    {
+       std::cout << mino.x << " " << mino.y << std::endl;
+        
+    }
   
     for(auto &mino : tetromino.getTetromino())
     {
-       playfield.at(mino.x).at(mino.y) = true;
+        
+       playfield[mino.y][mino.x] = true;
     }
   
    

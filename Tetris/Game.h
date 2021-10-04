@@ -18,10 +18,11 @@ public:
     int run();
     void updateDeltaTime();
     Shape getRandomShape();
-    void update(Tetromino tetromino,  Matrix &playfiel);
+    void update(Tetromino tetromino,  Matrix &playfield);
 
 
 private:
+    bool gameOver = false;
     sf::Clock clock;
     float deltaTime;
     sf::Time elapsedTime;
