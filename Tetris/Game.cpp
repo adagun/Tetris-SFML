@@ -128,7 +128,8 @@ int Game::run() {
             {
                 std::cout << "game over" << std::endl;
                 return EXIT_SUCCESS;
-                // font faile
+                // make some kind of game over screen
+                // font fails to load
                /* sf::Text text;
                 sf::Font font;
                if (!font.loadFromFile("../Official.ttf"))
