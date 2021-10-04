@@ -11,7 +11,7 @@
 // TODO implement rotate function
 // TODO implement collision with tetrominos at the sides
 // TODO drop down function
-
+// TODO game over check function
 
 int Game::run() {
     // Matrix is an alias for std::vector<std::vector<bool>>

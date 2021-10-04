@@ -71,13 +71,7 @@
 
 bool Tetromino::fallDown(const Matrix  &playfield) {
 
-  
-
-
-  
-
-
-
+ 
     for(auto &mino : minos)
     {
         // if any mino hits the floor it should make the whole tetromino stop
@@ -117,13 +111,17 @@ void Tetromino::moveLeft(const Matrix& playfield)
 {
      for(auto &mino : minos)
      {
-         //check all minos before moving so it doesn't go out of screen
+        //check all minos before moving so it doesn't go out of screen
          if(mino.x -1 < 0)         
             return;     
      }    
+
+      // todo check if there is a occupied square left this minos position
+
+
      for(auto &mino : minos)
      {
-                 mino.x--;
+           mino.x--;
      }
 }
 
@@ -135,13 +133,16 @@ void Tetromino::moveRight(const Matrix& playfield)
                 return;
         }
 
+     // todo check if there is a occupied square right this minos position
+
+
        for(auto &mino : minos)
        {
                  mino.x++;
        }
 
 }
-
+// to move the new spawning tetromino
 void Tetromino::moveCenter()
 {
      for(auto &mino : minos)
