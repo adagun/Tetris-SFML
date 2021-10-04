@@ -102,8 +102,10 @@ int Game::run() {
              if(!currentTetromino.isFalling())
             {
                  std::cout << "Hit something" << std::endl;
-                 // add minos position to the playfield matrix
-                update(currentTetromino, playfield);
+                
+                 tetrominos.emplace_back(currentTetromino);
+                  // add minos position to the playfield matrix
+                 update(currentTetromino, playfield);
 
                    for(int i = 0; i < ROWS; i++)
                    {
@@ -118,7 +120,7 @@ int Game::run() {
 
                 auto tetromino = Tetromino(getRandomShape());
                 tetromino.moveCenter();
-                tetrominos.emplace_back(tetromino);
+                
                 currentTetromino = tetromino;   
 
               
