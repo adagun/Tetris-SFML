@@ -111,7 +111,6 @@ void Tetromino::rotate(const Matrix& playfield)
 {
     // TODO make sure it doesn't go out of bounds or into another tetrominno
 
-
     if(shape == Shape::O)
     {
         return;

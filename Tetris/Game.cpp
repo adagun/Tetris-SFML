@@ -7,9 +7,10 @@
 #include "Mino.hpp"
 #include <random>
 
-// TODO rows are removed but not from the vector of drawn tetrominos
 // TODO collision check in the rotation function
-
+// TODO hard drop
+// TODO score system
+// TODO Game over screen
 int Game::run() {
     // Matrix is an alias for std::vector<std::vector<bool>>
     // 2d vector of bool
@@ -42,7 +43,7 @@ int Game::run() {
         }
         if(gameOver)
         {
-            std::cout << "game over" << std::endl;
+            std::cout << "Game over" << std::endl;
             return EXIT_SUCCESS;
             // make some kind of game over screen
             // font fails to load
@@ -68,7 +69,7 @@ int Game::run() {
                 window.close();
                 break;
             }
-            // TODO change to key released?
+
             // movement
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             {      
@@ -96,13 +97,23 @@ int Game::run() {
             grid.render(square);
                
             //draw the previous minos
-           for(auto tetromino : tetrominos)
+           for(auto &tetromino : tetrominos)
            {
                 for(auto &mino : tetromino.getTetromino())
-                 {                    
-                    square.setFillColor(tetromino.getColor());
-                    square.setPosition(static_cast<float>(mino.x * SQUARE_SIZE), static_cast<float>(mino.y * SQUARE_SIZE));
-                    window.draw(square);
+                 {
+                    if (!playfield[mino.y][mino.x])
+                    {
+                        square.setFillColor(sf::Color::Transparent);
+                        square.setPosition(static_cast<float>(mino.x * SQUARE_SIZE), static_cast<float>(mino.y * SQUARE_SIZE));
+                        window.draw(square);
+
+                    } else
+                    {
+
+                        square.setFillColor(tetromino.getColor());
+                        square.setPosition(static_cast<float>(mino.x * SQUARE_SIZE), static_cast<float>(mino.y * SQUARE_SIZE));
+                        window.draw(square);
+                    }
                  }
             }
    
@@ -124,15 +135,12 @@ int Game::run() {
                  update(currentTetromino, playfield);
                  rowsToRemove = checkRows(playfield);
 
+                // set the full rows to false
+                removeRows(playfield, rowsToRemove);
 
-                 // set the full rows to false
-                 for(auto row : rowsToRemove)
-                 {
-                     for(int i = 0; i < COLUMNS; i++)
-                     {
-                         playfield[row][i] = false;
-                     }
-                 }
+
+                 // todo move down rows above full 0 row
+
                 // display the playfield in the console
                    for(int i = 0; i < ROWS; i++)
                    {
@@ -226,9 +234,11 @@ void Game::update(Tetromino tetromino, Matrix &playfield)
 
 }
 
+
+
+// finding and returning a vector of all rows that are full
 std::vector<int> Game::checkRows(Matrix &playfield)
 {
-    // todo change the drawn squares too
 
     bool fullRow;
     std::vector<int> rowsToRemove;
@@ -247,14 +257,34 @@ std::vector<int> Game::checkRows(Matrix &playfield)
             rowsToRemove.emplace_back(i);
         }
     }
-
-    for(auto row : rowsToRemove)
-    {
-        std::cout << "full row found at " << row << std::endl;
-    }
     return rowsToRemove;
 
 
 }
+
+void Game::removeRows(Matrix &playfield, std::vector<int> rowsToRemove)
+{
+    for(auto row : rowsToRemove)
+    {
+        for(int i = 0; i < COLUMNS; i++)
+        {
+            playfield[row][i] = false;
+        }
+    }
+            // remove the full rows and create a new one at the top
+            // the rows above are moved down a step
+            for(auto row : rowsToRemove)
+            {
+                playfield.insert(playfield.begin(),std::vector<bool>(COLUMNS));
+                playfield.erase(playfield.begin()+row+1);
+            }
+
+
+    }
+
+
+
+
+
 
 

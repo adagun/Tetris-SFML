@@ -14,10 +14,6 @@ public:
     Game()
     { }
     int run();
-    void updateDeltaTime();
-    Shape getRandomShape();
-    void update(Tetromino tetromino,  Matrix &playfield);
-    std::vector<int>  checkRows(Matrix &playfield);
 
 
 private:
@@ -25,7 +21,12 @@ private:
     sf::Clock clock;
     float deltaTime;
     sf::Time elapsedTime;
-  
+
+    void updateDeltaTime();
+    Shape getRandomShape();
+    void update(Tetromino tetromino,  Matrix &playfield);
+    std::vector<int>  checkRows(Matrix &playfield);
+    void removeRows(Matrix &playfield, std::vector<int> rowsToRemove);
 
 };
 #endif //TETRIS_GAME_H
