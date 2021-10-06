@@ -272,6 +272,7 @@ void Tetromino::rotate(const Matrix& playfield)
 
         }
     }
+
    else if(shape == Shape::L)
     {
         if(rotation == 0)
@@ -280,7 +281,8 @@ void Tetromino::rotate(const Matrix& playfield)
             minos[1].x--;
             minos[2].x-=2;
             minos[2].y++;
-            minos[3].y++;
+            minos[3].x--;
+            minos[3].y+=2;
 
         }
         else if(rotation == 1)
@@ -289,6 +291,9 @@ void Tetromino::rotate(const Matrix& playfield)
             minos[1].x++;
             minos[1].y--;
             minos[2].y-=2;
+            minos[3].x--;
+            minos[3].y--;
+
 
         }
         if(rotation == 2)
@@ -297,14 +302,24 @@ void Tetromino::rotate(const Matrix& playfield)
             minos[1].x++;
             minos[1].y++;
             minos[2].x+=2;
+            minos[3].x++;
+            minos[3].y--;
 
+            // fix minos moving right when rotating here
+            for(auto &mino: minos)
+            {
+                mino.x--;
+            }
         }
         else if(rotation == 3)
         {
-            minos[0].x-=2;
-            minos[1].x--;
-            minos[1].y++;
-            minos[2].y+=2;
+            minos[0].x--;
+            minos[0].y--;
+            minos[2].x++;
+            minos[2].y++;
+            minos[3].x+=2;
+
+
         }
     }
      rotation++;
