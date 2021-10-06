@@ -109,7 +109,7 @@ bool Tetromino::fallDown(const Matrix  &playfield) {
 
 void Tetromino::rotate(const Matrix& playfield)
 {
-    // make sure it doesnt go out of bounds
+    // make sure it doesn't go out of bounds
 
     // logging
     std::cout << "rotation: " << rotation << std::endl;
@@ -124,7 +124,7 @@ void Tetromino::rotate(const Matrix& playfield)
         return;
     }
 
-    if(shape == Shape::I)
+    else if(shape == Shape::I)
     {
         std::cout << rotation << std::endl;
         if(rotation == 0 || rotation == 2)
@@ -154,7 +154,7 @@ void Tetromino::rotate(const Matrix& playfield)
        
     }
 
-    if(shape == Shape::T)
+    else if(shape == Shape::T)
     {
         if(rotation == 0)
         {
@@ -189,7 +189,7 @@ void Tetromino::rotate(const Matrix& playfield)
             minos[2].y+=2;
         }
     }
-    if(shape == Shape::S) {
+   else if(shape == Shape::S) {
         // S shape has two states
         if (rotation == 0 || rotation == 2) {
 
@@ -210,7 +210,7 @@ void Tetromino::rotate(const Matrix& playfield)
         }
     }
 
-    if(shape == Shape::Z)
+   else if(shape == Shape::Z)
     {
         if(rotation == 0 || rotation == 2)
         {
@@ -230,6 +230,81 @@ void Tetromino::rotate(const Matrix& playfield)
             minos[1].y--;
             minos[3].x++;
             minos[3].y--;
+        }
+    }
+   else if(shape == Shape::J)
+    {
+        if(rotation == 0)
+        {
+            minos[0].x++;
+            minos[1].y--;
+            minos[2].x--;
+            minos[3].x-=2;
+            minos[3].y++;
+
+        }
+        else if(rotation == 1)
+        {
+            minos[0].y++;
+            minos[1].x++;
+            minos[2].y--;
+            minos[3].x--;
+            minos[3].y-=2;
+
+        }
+        if(rotation == 2)
+        {
+            minos[0].x--;
+            minos[0].y++;
+            minos[1].y+=2;
+            minos[2].x++;
+            minos[2].y++;
+            minos[3].x+=2;
+
+        }
+        else if(rotation == 3)
+        {
+            minos[0].y--;
+            minos[1].x--;
+            minos[2].y++;
+            minos[3].x++;
+            minos[3].y+=2;
+
+        }
+    }
+   else if(shape == Shape::L)
+    {
+        if(rotation == 0)
+        {
+            minos[0].y--;
+            minos[1].x--;
+            minos[2].x-=2;
+            minos[2].y++;
+            minos[3].y++;
+
+        }
+        else if(rotation == 1)
+        {
+            minos[0].x+=2;
+            minos[1].x++;
+            minos[1].y--;
+            minos[2].y-=2;
+
+        }
+        if(rotation == 2)
+        {
+            minos[0].y+=2;
+            minos[1].x++;
+            minos[1].y++;
+            minos[2].x+=2;
+
+        }
+        else if(rotation == 3)
+        {
+            minos[0].x-=2;
+            minos[1].x--;
+            minos[1].y++;
+            minos[2].y+=2;
         }
     }
      rotation++;
