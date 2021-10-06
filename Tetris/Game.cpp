@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "Game.h"
 #include "Grid.h"
@@ -22,9 +21,11 @@ int Game::run() {
     sf::RenderWindow window(sf::VideoMode(SQUARE_SIZE * COLUMNS, SQUARE_SIZE * ROWS), "TETRIS");
     window.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
     auto grid = Grid(window);
+    // the tetromino that is currently falling
     auto currentTetromino = Tetromino(getRandomShape());
     currentTetromino.moveCenter();
     currentTetromino.setFall(true);
+    // stores the previous dropped tetrominos
     std::vector<Tetromino> tetrominos;
     sf::Event event{};
 
@@ -44,20 +45,10 @@ int Game::run() {
         if(gameOver)
         {
             std::cout << "Game over" << std::endl;
-            return EXIT_SUCCESS;
             // make some kind of game over screen
-            // font fails to load
-            /* sf::Text text;
-             sf::Font font;
-            if (!font.loadFromFile("../Official.ttf"))
-            {
-                return EXIT_FAILURE;
-            }
-             text.setFont(font);
-             text.setString("Game Over");
-             text.setCharacterSize(24);
-             text.setFillColor(sf::Color::Red);
-             window.draw(text);*/
+            return EXIT_SUCCESS;
+
+
         }
         
         updateDeltaTime();
@@ -109,7 +100,6 @@ int Game::run() {
 
                     } else
                     {
-
                         square.setFillColor(tetromino.getColor());
                         square.setPosition(static_cast<float>(mino.x * SQUARE_SIZE), static_cast<float>(mino.y * SQUARE_SIZE));
                         window.draw(square);
@@ -128,8 +118,7 @@ int Game::run() {
              // check if it hit something
              if(!currentTetromino.isFalling())
             {
-                 std::cout << "Hit something" << std::endl;
-                  
+                 // add it to the vector
                  tetrominos.emplace_back(currentTetromino);
                   // add minos position to the playfield matrix
                  update(currentTetromino, playfield);
@@ -139,8 +128,6 @@ int Game::run() {
                 removeRows(playfield, rowsToRemove);
 
 
-                 // todo move down rows above full 0 row
-
                 // display the playfield in the console
                    for(int i = 0; i < ROWS; i++)
                    {
@@ -148,7 +135,6 @@ int Game::run() {
                        {
                            std::cout << playfield[i][j] << " ";
                        }
-
                       std::cout << std::endl;
                     }
 
@@ -162,7 +148,6 @@ int Game::run() {
             window.display();
    
         }
-
         return EXIT_SUCCESS;
     }
 
@@ -172,6 +157,7 @@ void Game::updateDeltaTime()
     this->deltaTime = this->clock.restart().asSeconds();
 }
 
+// returns a random shape to be spawned
 Shape Game::getRandomShape()
 {
     std::random_device device;
@@ -212,7 +198,6 @@ Shape Game::getRandomShape()
     return Shape::O;
 }
 
-
 // sets all square as occupied by a dropped piece
 void Game::update(Tetromino tetromino, Matrix &playfield)
 {
@@ -233,7 +218,6 @@ void Game::update(Tetromino tetromino, Matrix &playfield)
     }
 
 }
-
 
 
 // finding and returning a vector of all rows that are full
@@ -258,7 +242,6 @@ std::vector<int> Game::checkRows(Matrix &playfield)
         }
     }
     return rowsToRemove;
-
 
 }
 
