@@ -24,13 +24,15 @@ int Game::run() {
     sf::RenderWindow window(sf::VideoMode(SQUARE_SIZE * COLUMNS, SQUARE_SIZE * ROWS), "TETRIS");
     window.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
     auto grid = Grid(window);
-    auto currentTetromino = Tetromino(getRandomShape());
+    auto currentTetromino = Tetromino(Shape::Z);
+    //auto currentTetromino = Tetromino(getRandomShape());
     currentTetromino.moveCenter();
     currentTetromino.setFall(true);
     std::vector<Tetromino> tetrominos;
     sf::Event event{};
+
     // time for the tetromino to fall one square
-    int gameSpeed = 200;
+    int gameSpeed = 1000;
     sf::Time dt = sf::milliseconds(gameSpeed);
 
     // game loop
@@ -38,7 +40,7 @@ int Game::run() {
     {
         elapsedTime += clock.restart();
         while( elapsedTime >= dt ){
-            currentTetromino.fallDown(playfield);          
+            currentTetromino.fallDown(playfield);               
             elapsedTime -= dt;
         }
 
@@ -52,7 +54,7 @@ int Game::run() {
                 window.close();
                 break;
             }
-
+            // TODO change to key released?
             // movement
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             {      
@@ -66,7 +68,10 @@ int Game::run() {
             {
                 currentTetromino.moveDown(playfield);
             }
-
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+            {
+                currentTetromino.rotate(playfield);
+            }
         }
 
             sf::RectangleShape square(sf::Vector2f(SQUARE_SIZE - 1, SQUARE_SIZE -1));
@@ -87,20 +92,19 @@ int Game::run() {
                  }
             }
    
-
-
+            // draw the current tetromino
              for(auto mino : currentTetromino.getTetromino())
                  {
                     square.setFillColor(currentTetromino.getColor());
                     square.setPosition(static_cast<float>(mino.x * SQUARE_SIZE), static_cast<float>(mino.y * SQUARE_SIZE));
                     window.draw(square);
                  }
-
-
+                
+             // check if it hit something
              if(!currentTetromino.isFalling())
             {
                  std::cout << "Hit something" << std::endl;
-                
+                  
                  tetrominos.emplace_back(currentTetromino);
                   // add minos position to the playfield matrix
                  update(currentTetromino, playfield);
@@ -114,11 +118,9 @@ int Game::run() {
                       std::cout << std::endl;
                     }
 
-
-
+                // spawn a new one and make i the current
                 auto tetromino = Tetromino(getRandomShape());
-                tetromino.moveCenter();
-                
+                tetromino.moveCenter();                
                 currentTetromino = tetromino;   
 
               
@@ -206,8 +208,7 @@ void Game::update(Tetromino tetromino, Matrix &playfield)
     }
   
     for(auto &mino : tetromino.getTetromino())
-    {
-        
+    {        
        playfield[mino.y][mino.x] = true;
     }
   

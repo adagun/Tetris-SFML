@@ -28,6 +28,7 @@ private:
     std::array<Mino, 4> minos;
     sf::Color color;
     bool falling = true;
+    int rotation = 0;
 public:
     Tetromino(Shape shape) : shape(shape)
     {
@@ -36,7 +37,7 @@ public:
     void createShape(Shape shape);
     std::array<Mino, 4> getTetromino() const {return minos;}
     bool fallDown(const Matrix &playfield);
-    //void rotate();
+    void rotate(const Matrix& playfield);
     void moveLeft(const Matrix &playfield);
     void moveRight(const Matrix &playfield);
     void moveDown(const Matrix &playfield);
@@ -44,7 +45,7 @@ public:
     void dropDown(const Matrix &playfield);
     sf::Color getColor() const {return color;}
     bool isFalling() const {return falling;}
-    void setFall(bool falling) {this->falling = falling;}
+    void setFall(bool falling) {this->falling = falling;};
 };
 
 
