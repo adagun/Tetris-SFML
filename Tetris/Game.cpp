@@ -8,15 +8,13 @@
 #include <random>
 
 // TODO check and remove full rows
-// TODO implement rotate function
 // TODO implement collision with tetrominos at the sides
-// TODO drop down function
 // TODO game over check function
 
 int Game::run() {
     // Matrix is an alias for std::vector<std::vector<bool>>
     // 2d vector of bool
-    // dropped pieces poisition are set as true
+    // dropped pieces position are set as true
     // the minos checks if the neighbouring squares
     //are occupied or not in the move and fall functions
     Matrix playfield(ROWS, std::vector<bool>(COLUMNS));
@@ -24,7 +22,7 @@ int Game::run() {
     sf::RenderWindow window(sf::VideoMode(SQUARE_SIZE * COLUMNS, SQUARE_SIZE * ROWS), "TETRIS");
     window.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
     auto grid = Grid(window);
-    auto currentTetromino = Tetromino(Shape::Z);
+    auto currentTetromino = Tetromino(Shape::L);
     //auto currentTetromino = Tetromino(getRandomShape());
     currentTetromino.moveCenter();
     currentTetromino.setFall(true);
