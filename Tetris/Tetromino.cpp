@@ -109,15 +109,8 @@ bool Tetromino::fallDown(const Matrix  &playfield) {
 
 void Tetromino::rotate(const Matrix& playfield)
 {
-    // make sure it doesn't go out of bounds
+    // TODO make sure it doesn't go out of bounds or into another tetrominno
 
-    // logging
-    std::cout << "rotation: " << rotation << std::endl;
-    int i = 0;
-    for(auto &mino : minos)
-    {
-        std::cout << "mino nr" << i++ << " " << mino.x << " " << mino.y << std::endl;
-    }
 
     if(shape == Shape::O)
     {
@@ -336,8 +329,14 @@ void Tetromino::moveLeft(const Matrix& playfield)
             return;     
      }    
 
-      // todo check if there is a occupied square left this minos position
 
+    for(auto &mino : minos)
+    {  // check if there is a occupied square to the left
+        if(playfield[mino.y][mino.x-1])
+        {
+            return;
+        }
+    }
 
      for(auto &mino : minos)
      {
@@ -353,12 +352,17 @@ void Tetromino::moveRight(const Matrix& playfield)
                 return;
         }
 
-     // todo check if there is a occupied square right this minos position
-
+    for(auto &mino : minos)
+    {        // check if there is a occupied square to the right
+        if(playfield[mino.y][mino.x+1])
+        {
+            return;
+        }
+    }
 
        for(auto &mino : minos)
        {
-                 mino.x++;
+           mino.x++;
        }
 
 }
