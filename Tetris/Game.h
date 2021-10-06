@@ -12,13 +12,12 @@
 class Game {
 public:
     Game()
-    {
-      
-    }
+    { }
     int run();
     void updateDeltaTime();
     Shape getRandomShape();
     void update(Tetromino tetromino,  Matrix &playfield);
+    std::vector<int>  checkRows(Matrix &playfield);
 
 
 private:

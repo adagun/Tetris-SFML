@@ -7,9 +7,7 @@
 #include "Mino.hpp"
 #include <random>
 
-// TODO check and remove full rows
-// TODO implement collision with tetrominos at the sides
-// TODO game over check function
+// TODO rows are removed but not from the vector of drawn tetrominos
 
 int Game::run() {
     // Matrix is an alias for std::vector<std::vector<bool>>
@@ -18,7 +16,7 @@ int Game::run() {
     // the minos checks if the neighbouring squares
     //are occupied or not in the move and fall functions
     Matrix playfield(ROWS, std::vector<bool>(COLUMNS));
-
+    std::vector <int> rowsToRemove;
     sf::RenderWindow window(sf::VideoMode(SQUARE_SIZE * COLUMNS, SQUARE_SIZE * ROWS), "TETRIS");
     window.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
     auto grid = Grid(window);
@@ -123,22 +121,33 @@ int Game::run() {
                  tetrominos.emplace_back(currentTetromino);
                   // add minos position to the playfield matrix
                  update(currentTetromino, playfield);
+                 rowsToRemove = checkRows(playfield);
 
-                 // display the playfield in the console
+
+                 // set the full rows to false
+                 for(auto row : rowsToRemove)
+                 {
+                     for(int i = 0; i < COLUMNS; i++)
+                     {
+                         playfield[row][i] = false;
+                     }
+                 }
+                // display the playfield in the console
                    for(int i = 0; i < ROWS; i++)
                    {
                        for(int j = 0; j < COLUMNS; j++)
+                       {
                            std::cout << playfield[i][j] << " ";
+                       }
 
                       std::cout << std::endl;
                     }
+
 
                 // spawn a new one and make i the current
                 auto tetromino = Tetromino(getRandomShape());
                 tetromino.moveCenter();                
                 currentTetromino = tetromino;   
-
-              
 
              }
             window.display();
@@ -198,10 +207,9 @@ Shape Game::getRandomShape()
 // sets all square as occupied by a dropped piece
 void Game::update(Tetromino tetromino, Matrix &playfield)
 {
+
     for(auto &mino : tetromino.getTetromino())
     {
-       std::cout << mino.x << " " << mino.y << std::endl;
-
        // if the dropped tetromino is placed above the playfield it's game over
        if(mino.y <= 0)
        {
@@ -214,9 +222,38 @@ void Game::update(Tetromino tetromino, Matrix &playfield)
     {        
        playfield[mino.y][mino.x] = true;
     }
-  
-   
+
 }
 
+std::vector<int> Game::checkRows(Matrix &playfield)
+{
+    // todo change the drawn squares too
+
+    bool fullRow;
+    std::vector<int> rowsToRemove;
+    for(int i = 0; i < ROWS; i++)
+    {
+        fullRow = true;
+        for(int j = 0; j < COLUMNS; j++)
+        {
+            if(!playfield[i][j])
+            {
+                fullRow = false;
+            }
+        }
+        if(fullRow)
+        {
+            rowsToRemove.emplace_back(i);
+        }
+    }
+
+    for(auto row : rowsToRemove)
+    {
+        std::cout << "full row found at " << row << std::endl;
+    }
+    return rowsToRemove;
+
+
+}
 
 
