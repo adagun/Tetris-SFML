@@ -22,26 +22,43 @@ int Game::run() {
     sf::RenderWindow window(sf::VideoMode(SQUARE_SIZE * COLUMNS, SQUARE_SIZE * ROWS), "TETRIS");
     window.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
     auto grid = Grid(window);
-    auto currentTetromino = Tetromino(Shape::L);
-    //auto currentTetromino = Tetromino(getRandomShape());
+    auto currentTetromino = Tetromino(getRandomShape());
     currentTetromino.moveCenter();
     currentTetromino.setFall(true);
     std::vector<Tetromino> tetrominos;
     sf::Event event{};
 
     // time for the tetromino to fall one square
-    int gameSpeed = 1000;
+    int gameSpeed = 500;
     sf::Time dt = sf::milliseconds(gameSpeed);
 
     // game loop
     while (window.isOpen())
     {
+
         elapsedTime += clock.restart();
         while( elapsedTime >= dt ){
             currentTetromino.fallDown(playfield);               
             elapsedTime -= dt;
         }
-
+        if(gameOver)
+        {
+            std::cout << "game over" << std::endl;
+            return EXIT_SUCCESS;
+            // make some kind of game over screen
+            // font fails to load
+            /* sf::Text text;
+             sf::Font font;
+            if (!font.loadFromFile("../Official.ttf"))
+            {
+                return EXIT_FAILURE;
+            }
+             text.setFont(font);
+             text.setString("Game Over");
+             text.setCharacterSize(24);
+             text.setFillColor(sf::Color::Red);
+             window.draw(text);*/
+        }
         
         updateDeltaTime();
         while (window.pollEvent(event))
@@ -107,12 +124,12 @@ int Game::run() {
                   // add minos position to the playfield matrix
                  update(currentTetromino, playfield);
 
+                 // display the playfield in the console
                    for(int i = 0; i < ROWS; i++)
                    {
                        for(int j = 0; j < COLUMNS; j++)
-                       {
                            std::cout << playfield[i][j] << " ";
-                       }
+
                       std::cout << std::endl;
                     }
 
@@ -124,24 +141,6 @@ int Game::run() {
               
 
              }
-            if(gameOver)
-            {
-                std::cout << "game over" << std::endl;
-                return EXIT_SUCCESS;
-                // make some kind of game over screen
-                // font fails to load
-               /* sf::Text text;
-                sf::Font font;
-               if (!font.loadFromFile("../Official.ttf"))
-               {
-                   return EXIT_FAILURE;
-               }
-                text.setFont(font);
-                text.setString("Game Over");
-                text.setCharacterSize(24);
-                text.setFillColor(sf::Color::Red);
-                window.draw(text);*/
-            }
             window.display();
    
         }
@@ -202,9 +201,15 @@ void Game::update(Tetromino tetromino, Matrix &playfield)
     for(auto &mino : tetromino.getTetromino())
     {
        std::cout << mino.x << " " << mino.y << std::endl;
+
+       // if the dropped tetromino is placed above the playfield it's game over
+       if(mino.y <= 0)
+       {
+           gameOver = true;
+           return;
+       }
         
     }
-  
     for(auto &mino : tetromino.getTetromino())
     {        
        playfield[mino.y][mino.x] = true;
