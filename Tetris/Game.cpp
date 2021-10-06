@@ -8,6 +8,7 @@
 #include <random>
 
 // TODO rows are removed but not from the vector of drawn tetrominos
+// TODO collision check in the rotation function
 
 int Game::run() {
     // Matrix is an alias for std::vector<std::vector<bool>>
