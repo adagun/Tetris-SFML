@@ -109,7 +109,8 @@ bool Tetromino::fallDown(const Matrix  &playfield) {
 
 void Tetromino::rotate(const Matrix& playfield)
 {
-    // TODO make sure it doesn't go out of bounds or into another tetrominno
+    // TODO make sure it doesn't go into another tetrominno
+
 
     if(shape == Shape::O)
     {
@@ -117,8 +118,11 @@ void Tetromino::rotate(const Matrix& playfield)
     }
 
     else if(shape == Shape::I)
-    {
-        std::cout << rotation << std::endl;
+    {       
+        // dont rotate it above the playfield matrix
+        if(minos[0].y < 2)
+            return;
+
         if(rotation == 0 || rotation == 2)
         {
              for(auto i = 0; i < 4; i++)
@@ -134,6 +138,14 @@ void Tetromino::rotate(const Matrix& playfield)
                minos[i].x = minos[0].x-i;
                minos[i].y = minos[0].y;
             }
+            // move if out of bounds
+             while(minos[3].x < 0)
+             {
+                   minos[0].x++;
+                   minos[1].x++;
+                   minos[2].x++;
+                   minos[3].x++;
+             }
         }
         else if(rotation == 3)
         {
@@ -142,7 +154,19 @@ void Tetromino::rotate(const Matrix& playfield)
                 minos[i].x = minos[0].x+i;
                 minos[i].y = minos[0].y;
             }
+               // move if out of bounds
+             while(minos[3].x > COLUMNS)
+             {
+                   minos[0].x--;
+                   minos[1].x--;
+                   minos[2].x--;
+                   minos[3].x--;
+             }
         }
+
+        
+
+       
        
     }
 
@@ -311,9 +335,45 @@ void Tetromino::rotate(const Matrix& playfield)
             minos[2].y++;
             minos[3].x+=2;
 
-
         }
     }
+
+    // fixing rotations going out of bounds
+    bool outOfBoundsLeft = false;
+    bool outOfBoundsRight = false;
+    for(auto &mino : minos)
+    {
+        if (mino.x < 0)
+        {
+            outOfBoundsLeft = true;
+        }
+        else if(mino.x >= COLUMNS)
+        {
+            outOfBoundsRight = true;
+        }
+    }
+
+    if(outOfBoundsLeft)
+    {
+        minos[0].x++;
+        minos[1].x++;
+        minos[2].x++;
+        minos[3].x++;
+    }
+    if(outOfBoundsRight)
+    {
+         minos[0].x--;
+         minos[1].x--;
+         minos[2].x--;
+         minos[3].x--;
+    }
+
+
+
+
+
+
+
      rotation++;
      if(rotation > 3)
          rotation = 0;
