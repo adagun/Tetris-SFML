@@ -20,7 +20,7 @@ int Game::run() {
     // the minos checks if the neighbouring squares
     //are occupied or not in the move and fall functions
     Matrix playfield(ROWS, std::vector<bool>(COLUMNS));
-    setFirstColumn(playfield);
+    resetPlayfield(playfield);
     std::vector <int> rowsToRemove;
     sf::RenderWindow window(sf::VideoMode(SQUARE_SIZE * COLUMNS+60, SQUARE_SIZE * ROWS+10), "TETRIS");
     window.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
@@ -34,8 +34,8 @@ int Game::run() {
     sf::Event event{};
 
     // time for the tetromino to fall one square
-    int gameSpeed = 500;
-    sf::Time dt = sf::milliseconds(gameSpeed);
+
+
 
     // game loop
     while (window.isOpen())
@@ -130,18 +130,14 @@ int Game::run() {
 
                 // set the full rows to false
                 removeRows(playfield, rowsToRemove);
-
-
-                // display the playfield in the console
-                   for(int i = 0; i < ROWS; i++)
-                   {
-                       for(int j = 0; j < COLUMNS; j++)
-                       {
-                           std::cout << playfield[i][j] << " ";
-                       }
-                      std::cout << std::endl;
-                    }
-
+                if(score >= SCORE_PER_LEVEL)
+                {
+                    // increase level and reset score / playfield
+                    level++;
+                    dt=sf::milliseconds(gameSpeed-=LEVEL_SPEED_INCREASE);
+                    resetPlayfield(playfield);
+                    score = 0;
+                }
 
                 // spawn a new one and make i the current
                 auto tetromino = Tetromino(getRandomShape());
@@ -251,32 +247,38 @@ std::vector<int> Game::checkRows(Matrix &playfield)
 
 void Game::removeRows(Matrix &playfield, std::vector<int> rowsToRemove)
 {
-    for(auto row : rowsToRemove)
-    {
-        for(int i = 0; i < COLUMNS; i++)
-        {
-            playfield[row][i] = false;
-        }
-    }
-            // remove the full rows and create a new one at the top
-            // the rows above are moved down a step
-            for(auto row : rowsToRemove)
-            {
-                playfield.insert(playfield.begin(),std::vector<bool>(COLUMNS));
-                playfield.erase(playfield.begin()+row+1);
-            }
-            // keep the left column as true because it's the border
-            playfield[0][0]=true;
+    // add the number of removed rows to the score
+    score += rowsToRemove.size();
 
+        // remove the full rows and create a new one at the top
+        // the rows above are moved down a step
+        for(auto row : rowsToRemove)
+        {
+            playfield.insert(playfield.begin(),std::vector<bool>(COLUMNS));
+            playfield.erase(playfield.begin()+row+1);
+        }
+        // keep the left column as true because it's the border
+        playfield[0][0]=true;
+
+    std::cout << "Score: " << score << std::endl;
+    std::cout << "speed: " << gameSpeed << std::endl;
+    std::cout << "level: " << level << std::endl;
 
     }
 
     // sets the border to true
-void Game::setFirstColumn(Matrix &playfield)
+void Game::resetPlayfield(Matrix &playfield)
 {
     for(int i = 0; i < ROWS; i++)
     {
-       playfield[i][0] = true;
+        for(int j = 0; j < COLUMNS; j++)
+        {
+            if(j == 0)
+                playfield[i][0] = true;
+            else
+                playfield[i][j] = false;
+        }
+
     }
 }
 

@@ -12,7 +12,13 @@
 class Game {
 public:
     Game()
-    { }
+    {
+        score = 0;
+        level = 1;
+        gameSpeed = START_GAME_SPEED;
+        dt = sf::milliseconds(gameSpeed);
+
+    }
     int run();
 
 
@@ -21,12 +27,15 @@ private:
     sf::Clock clock;
     float deltaTime;
     sf::Time elapsedTime;
-
+    int score;
+    int level;
+    int gameSpeed;
+    sf::Time dt;
     void updateDeltaTime();
     Shape getRandomShape();
     void update(Tetromino tetromino,  Matrix &playfield);
     std::vector<int>  checkRows(Matrix &playfield);
     void removeRows(Matrix &playfield, std::vector<int> rowsToRemove);
-    void setFirstColumn(Matrix &playfield);
+    void resetPlayfield(Matrix &playfield);
 };
 #endif //TETRIS_GAME_H
