@@ -341,6 +341,7 @@ void Tetromino::rotate(const Matrix& playfield)
     // fixing rotations going out of bounds
     bool outOfBoundsLeft = false;
     bool outOfBoundsRight = false;
+    bool outOfBoundsBottom = false;
     for(auto &mino : minos)
     {
         if (mino.x < 0)
@@ -350,6 +351,10 @@ void Tetromino::rotate(const Matrix& playfield)
         else if(mino.x >= COLUMNS)
         {
             outOfBoundsRight = true;
+        }
+        else if(mino.y >= ROWS)
+        {
+            outOfBoundsBottom = true;
         }
     }
 
@@ -366,6 +371,13 @@ void Tetromino::rotate(const Matrix& playfield)
          minos[1].x--;
          minos[2].x--;
          minos[3].x--;
+    }
+    if(outOfBoundsBottom)
+    {
+        minos[0].y--;
+        minos[1].y--;
+        minos[2].y--;
+        minos[3].y--;
     }
 
 
