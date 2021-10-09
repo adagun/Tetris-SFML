@@ -6,10 +6,13 @@
 #include "Mino.hpp"
 #include <random>
 
-// TODO collision check in the rotation function
 // TODO hard drop
-// TODO score system
+// TODO score system // count rows to remove and add to score variable
+// TODO levels // once score or  removed rows reaches a certain number, reset game and increase speed
 // TODO Game over screen
+// TODO refactor
+// TODO display score, next and level to the right of screen
+
 int Game::run() {
     // Matrix is an alias for std::vector<std::vector<bool>>
     // 2d vector of bool
@@ -17,8 +20,9 @@ int Game::run() {
     // the minos checks if the neighbouring squares
     //are occupied or not in the move and fall functions
     Matrix playfield(ROWS, std::vector<bool>(COLUMNS));
+    setFirstColumn(playfield);
     std::vector <int> rowsToRemove;
-    sf::RenderWindow window(sf::VideoMode(SQUARE_SIZE * COLUMNS, SQUARE_SIZE * ROWS), "TETRIS");
+    sf::RenderWindow window(sf::VideoMode(SQUARE_SIZE * COLUMNS+60, SQUARE_SIZE * ROWS+10), "TETRIS");
     window.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
     auto grid = Grid(window);
     // the tetromino that is currently falling
@@ -261,11 +265,20 @@ void Game::removeRows(Matrix &playfield, std::vector<int> rowsToRemove)
                 playfield.insert(playfield.begin(),std::vector<bool>(COLUMNS));
                 playfield.erase(playfield.begin()+row+1);
             }
+            // keep the left column as true because it's the border
+            playfield[0][0]=true;
 
 
     }
 
-
+    // sets the border to true
+void Game::setFirstColumn(Matrix &playfield)
+{
+    for(int i = 0; i < ROWS; i++)
+    {
+       playfield[i][0] = true;
+    }
+}
 
 
 

@@ -119,7 +119,7 @@ void Tetromino::rotate(const Matrix& playfield)
 
     else if(shape == Shape::I)
     {       
-        // dont rotate it above the playfield matrix
+        // don't rotate it above the playfield matrix
         if(minos[0].y < 2)
             return;
 
@@ -163,11 +163,6 @@ void Tetromino::rotate(const Matrix& playfield)
                    minos[3].x--;
              }
         }
-
-        
-
-       
-       
     }
 
     else if(shape == Shape::T)
@@ -344,7 +339,7 @@ void Tetromino::rotate(const Matrix& playfield)
     bool outOfBoundsBottom = false;
     for(auto &mino : minos)
     {
-        if (mino.x < 0)
+        if (mino.x < 1)
         {
             outOfBoundsLeft = true;
         }
@@ -396,7 +391,7 @@ void Tetromino::moveLeft(const Matrix& playfield)
      for(auto &mino : minos)
      {
         //check all minos before moving so it doesn't go out of screen
-         if(mino.x -1 < 0)         
+         if(mino.x < 2)
             return;     
      }    
 

@@ -27,6 +27,6 @@ private:
     void update(Tetromino tetromino,  Matrix &playfield);
     std::vector<int>  checkRows(Matrix &playfield);
     void removeRows(Matrix &playfield, std::vector<int> rowsToRemove);
-
+    void setFirstColumn(Matrix &playfield);
 };
 #endif //TETRIS_GAME_H

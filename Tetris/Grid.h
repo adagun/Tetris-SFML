@@ -16,9 +16,6 @@ private:
 public:
     Grid(sf::RenderWindow &window) : window(window)  { }
     void render(sf::RectangleShape square);
-
-
-
 };
 
 
