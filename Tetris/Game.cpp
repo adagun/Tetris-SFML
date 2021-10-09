@@ -7,12 +7,10 @@
 #include <random>
 
 // TODO hard drop
-// TODO score system // count rows to remove and add to score variable
-// TODO levels // once score or  removed rows reaches a certain number, reset game and increase speed
-// TODO Game over screen
+// TODO Game over
+// TODO display score, next tetromino and level to the right of screen
+// TODO rotation check for other tetrominos
 // TODO refactor
-// TODO display score, next and level to the right of screen
-
 int Game::run() {
     // Matrix is an alias for std::vector<std::vector<bool>>
     // 2d vector of bool
