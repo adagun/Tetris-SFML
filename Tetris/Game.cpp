@@ -7,7 +7,6 @@
 #include <random>
 
 // TODO hard drop
-// TODO Game over
 // TODO display next tetromino to the right of screen
 // TODO rotation check for other tetrominos
 // TODO refactor
@@ -38,6 +37,7 @@ int Game::run() {
     }
     sf::Text levelText;
     sf::Text scoreText;
+    sf::Text gameOverText;
 
     levelText.setFont(font);
     scoreText.setFont(font);
@@ -45,8 +45,8 @@ int Game::run() {
     levelText.setString("Level: 1");
     levelText.setCharacterSize(10);
     scoreText.setCharacterSize(10);
-    scoreText.setPosition(sf::Vector2f(135.0f, 80.0f));
-    levelText.setPosition(sf::Vector2f(135.0f, 60.0f));
+    levelText.setPosition(sf::Vector2f(135.0f, 80.0f));
+    scoreText.setPosition(sf::Vector2f(135.0f, 60.0f));
 
     // time for the tetromino to fall one square
 
@@ -55,24 +55,15 @@ int Game::run() {
     // game loop
     while (window.isOpen())
     {
-
         elapsedTime += clock.restart();
-        while( elapsedTime >= dt ){
+        while( elapsedTime >= dt && !gameOver )
+        {
             currentTetromino.fallDown(playfield);               
             elapsedTime -= dt;
-        }
-        if(gameOver)
-        {
-            std::cout << "Game over" << std::endl;
-            // make some kind of game over screen
-            return EXIT_SUCCESS;
-
-
         }
 
         while (window.pollEvent(event))
         {
-
             if (event.type == sf::Event::Closed || event.key.code == sf::Keyboard::Escape)
             {
                 window.close();
@@ -96,7 +87,7 @@ int Game::run() {
             {
                 currentTetromino.rotate(playfield);
             }
-        }
+            }
 
             sf::RectangleShape square(sf::Vector2f(SQUARE_SIZE - 1, SQUARE_SIZE -1));
 
@@ -151,20 +142,36 @@ int Game::run() {
                     dt=sf::milliseconds(gameSpeed-=LEVEL_SPEED_INCREASE);
                     resetPlayfield(playfield);
                     score = 0;
-                     }
+                }
 
                 // spawn a new one and make i the current
                 auto tetromino = Tetromino(getRandomShape());
                 tetromino.moveCenter();                
                 currentTetromino = tetromino;   
-
             }
-        scoreText.setString("Score: " + std::to_string(score));
-        window.draw(scoreText);
-        levelText.setString("Level: " + std::to_string(level));
-        window.draw(levelText);
-        window.display();
-   
+        if(gameOver)
+        {
+            window.clear();
+            gameOverText.setFont(font);
+            gameOverText.setString("Game Over");
+            gameOverText.setCharacterSize(30);
+            gameOverText.setPosition(sf::Vector2f(10.0f, 30.0f));
+            levelText.setPosition(sf::Vector2f(60.0f, 70.0f));
+            scoreText.setPosition(sf::Vector2f(60.0f, 80.0f));
+            window.draw(scoreText);
+            window.draw(levelText);
+            window.draw(gameOverText);
+            window.display();
+
+        }
+        else
+        {
+            scoreText.setString("Score: " + std::to_string(score));
+            window.draw(scoreText);
+            levelText.setString("Level: " + std::to_string(level));
+            window.draw(levelText);
+            window.display();
+        }
         }
         return EXIT_SUCCESS;
     }
