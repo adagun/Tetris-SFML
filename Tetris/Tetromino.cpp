@@ -120,7 +120,7 @@ void Tetromino::rotate(const Matrix& playfield)
     else if(shape == Shape::I)
     {       
         // don't rotate it above the playfield matrix
-        if(minos[0].y < 2)
+        if(minos[0].y < 3)
             return;
 
         if(rotation == 0 || rotation == 2)
@@ -329,7 +329,6 @@ void Tetromino::rotate(const Matrix& playfield)
             minos[2].x++;
             minos[2].y++;
             minos[3].x+=2;
-
         }
     }
 
@@ -374,12 +373,6 @@ void Tetromino::rotate(const Matrix& playfield)
         minos[2].y--;
         minos[3].y--;
     }
-
-
-
-
-
-
 
      rotation++;
      if(rotation > 3)
