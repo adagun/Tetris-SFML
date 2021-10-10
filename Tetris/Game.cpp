@@ -30,6 +30,7 @@ int Game::run() {
     std::vector<Tetromino> tetrominos;
     sf::Event event{};
 
+    // font and text
     sf::Font font;
     if(!font.loadFromFile("fonts/arial.ttf"))
     {
@@ -48,8 +49,15 @@ int Game::run() {
     levelText.setPosition(sf::Vector2f(135.0f, 80.0f));
     scoreText.setPosition(sf::Vector2f(135.0f, 60.0f));
 
-    // time for the tetromino to fall one square
-
+    // music
+    sf::Music music;
+    if (!music.openFromFile("music/music.ogg"))
+      {
+        std::cout << "Error loading music" << std::endl;
+    }
+    music.setLoop(true);
+    music.setVolume(50.0f);
+    music.play();
 
 
     // game loop
@@ -87,13 +95,20 @@ int Game::run() {
             {
                 currentTetromino.rotate(playfield);
             }
+            // mute / unmute music
+             if(sf::Keyboard::isKeyPressed(sf::Keyboard::M))
+            {
+                 if(music.getVolume() == 0)
+                    music.setVolume(50.0f);
+                 else                 
+                    music.setVolume(0);                
             }
+        }
 
             sf::RectangleShape square(sf::Vector2f(SQUARE_SIZE - 1, SQUARE_SIZE -1));
-
             window.clear();
-           
-            // draw grid//
+          
+            // draw grid
             grid.render(square);
                
             //draw the previous minos
@@ -151,6 +166,7 @@ int Game::run() {
             }
         if(gameOver)
         {
+            music.stop();
             window.clear();
             gameOverText.setFont(font);
             gameOverText.setString("Game Over");
