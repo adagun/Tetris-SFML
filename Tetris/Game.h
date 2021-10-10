@@ -31,7 +31,6 @@ private:
     int level;
     int gameSpeed;
     sf::Time dt;
-    void updateDeltaTime();
     Shape getRandomShape();
     void update(Tetromino tetromino,  Matrix &playfield);
     std::vector<int>  checkRows(Matrix &playfield);

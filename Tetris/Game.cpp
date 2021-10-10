@@ -8,7 +8,7 @@
 
 // TODO hard drop
 // TODO Game over
-// TODO display score, next tetromino and level to the right of screen
+// TODO display next tetromino to the right of screen
 // TODO rotation check for other tetrominos
 // TODO refactor
 int Game::run() {
@@ -31,6 +31,23 @@ int Game::run() {
     std::vector<Tetromino> tetrominos;
     sf::Event event{};
 
+    sf::Font font;
+    if(!font.loadFromFile("fonts/arial.ttf"))
+    {
+        std::cout << "Error loading font file" << std::endl;
+    }
+    sf::Text levelText;
+    sf::Text scoreText;
+
+    levelText.setFont(font);
+    scoreText.setFont(font);
+    scoreText.setString("Score: 0");
+    levelText.setString("Level: 1");
+    levelText.setCharacterSize(10);
+    scoreText.setCharacterSize(10);
+    scoreText.setPosition(sf::Vector2f(135.0f, 80.0f));
+    levelText.setPosition(sf::Vector2f(135.0f, 60.0f));
+
     // time for the tetromino to fall one square
 
 
@@ -52,8 +69,7 @@ int Game::run() {
 
 
         }
-        
-        updateDeltaTime();
+
         while (window.pollEvent(event))
         {
 
@@ -135,25 +151,23 @@ int Game::run() {
                     dt=sf::milliseconds(gameSpeed-=LEVEL_SPEED_INCREASE);
                     resetPlayfield(playfield);
                     score = 0;
-                }
+                     }
 
                 // spawn a new one and make i the current
                 auto tetromino = Tetromino(getRandomShape());
                 tetromino.moveCenter();                
                 currentTetromino = tetromino;   
 
-             }
-            window.display();
+            }
+        scoreText.setString("Score: " + std::to_string(score));
+        window.draw(scoreText);
+        levelText.setString("Level: " + std::to_string(level));
+        window.draw(levelText);
+        window.display();
    
         }
         return EXIT_SUCCESS;
     }
-
-    // updating the delta time for rendering one frame
-void Game::updateDeltaTime()
-{
-    this->deltaTime = this->clock.restart().asSeconds();
-}
 
 // returns a random shape to be spawned
 Shape Game::getRandomShape()
