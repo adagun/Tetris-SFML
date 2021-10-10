@@ -272,10 +272,6 @@ void Game::removeRows(Matrix &playfield, std::vector<int> rowsToRemove)
         // keep the left column as true because it's the border
         playfield[0][0]=true;
 
-    std::cout << "Score: " << score << std::endl;
-    std::cout << "speed: " << gameSpeed << std::endl;
-    std::cout << "level: " << level << std::endl;
-
     }
 
     // sets the border to true
